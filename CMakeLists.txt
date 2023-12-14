@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.14)
 project(limereport)
 
 set(LIMEREPORT_VERSION_MAJOR 1)
-set(LIMEREPORT_VERSION_MINOR 7)
-set(LIMEREPORT_VERSION_RELEASE 5)
+set(LIMEREPORT_VERSION_MINOR 6)
+set(LIMEREPORT_VERSION_RELEASE 8)
 
 option(ENABLE_ZINT "Enable libzint build for barcode support" OFF)
 option(LIMEREPORT_STATIC "Build LimeReport as static library" OFF)
@@ -15,6 +15,11 @@ if(USE_QT6)
 else()
     find_package(QT NAMES Qt5)
 endif(USE_QT6)
+
+#set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.12.12/5.12.12/msvc2017_64/lib/cmake")
+set(CMAKE_PREFIX_PATH $ENV{QTDIR512})
+set(QT_VERSION_MAJOR "5")
+
 find_package(
   Qt${QT_VERSION_MAJOR}
   COMPONENTS Core Widgets Sql Network Xml Svg Qml PrintSupport REQUIRED
@@ -47,7 +52,7 @@ endif()
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
